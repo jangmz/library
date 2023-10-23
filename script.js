@@ -6,6 +6,8 @@ function Book(title, author, pages) {
 
 const myLibrary = [{title: "Harry Potter 1", author: "JK Rowling", pages: 230}, {title: "Harry Potter 2", author: "JK Rowling", pages: 320}, {title: "Harry Potter 3", author: "JK Rowling", pages: 440}];
 
+
+
 function addBookToLibrary() {
     let title = prompt("Enter a book title");
     let author = prompt("Enter author of that book");
@@ -16,13 +18,32 @@ function addBookToLibrary() {
 }
 
 function readMyLibrary() {
+    const cards = document.querySelector(".cards");
+    
     myLibrary.forEach(book => {
-        console.log(`Title: ${book.title}, author: ${book.author}, pages: ${book.pages}.`);
-    })
-}
+        const card = document.createElement("div");
+        card.classList.add("card");
+        
+        const bookTitle = document.createElement("h2");
+        bookTitle.textContent = book.title;
+        const author = document.createElement("h4");
+        author.textContent = book.author;
+        const pages = document.createElement("h5");
+        pages.textContent = book.pages + " pages";
 
-while(myLibrary.length < 4) {
+        card.appendChild(bookTitle);
+        card.appendChild(author);
+        card.appendChild(pages);
+
+        cards.appendChild(card);
+    });
+    
+    
+}
+/*
+while(myLibrary.length < 3) {
     addBookToLibrary();
 }
+*/
 
 readMyLibrary();
