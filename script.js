@@ -1,10 +1,10 @@
-const myLibrary = [];
-
 function Book(title, author, pages) {
     this.title = title;
     this.author = author;
     this.pages = pages;
 }
+
+const myLibrary = [{title: "Harry Potter 1", author: "JK Rowling", pages: 230}, {title: "Harry Potter 2", author: "JK Rowling", pages: 320}, {title: "Harry Potter 3", author: "JK Rowling", pages: 440}];
 
 function addBookToLibrary() {
     let title = prompt("Enter a book title");
@@ -21,7 +21,7 @@ function readMyLibrary() {
     })
 }
 
-while(myLibrary.length < 3) {
+while(myLibrary.length < 4) {
     addBookToLibrary();
 }
 
