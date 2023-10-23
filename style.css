@@ -1,11 +1,31 @@
+body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.heading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.heading #newBook {
+    padding: 10px 30px;
+    background-color: rgb(200, 248, 123);
+    border-style: none;
+    border-radius: 9px;
+    margin-bottom: 30px;
+}
+.heading #newBook:hover {
+    /*background-color: rgb(154, 192, 93);*/
+    box-shadow: 0 0 5px black;
+    cursor: pointer;
+}
 .cards {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 40px;
 }
 .card {
     padding: 0px 20px;
     border: 1px solid gray;
     border-radius: 9px;
-    flex: 1;
+    flex: 1 1 auto;
 }

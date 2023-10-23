@@ -40,10 +40,5 @@ function readMyLibrary() {
     
     
 }
-/*
-while(myLibrary.length < 3) {
-    addBookToLibrary();
-}
-*/
 
 readMyLibrary();
