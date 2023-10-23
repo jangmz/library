@@ -4,10 +4,6 @@ function Book(title, author, pages) {
     this.pages = pages;
 }
 
-const myLibrary = [{title: "Harry Potter 1", author: "JK Rowling", pages: 230}, {title: "Harry Potter 2", author: "JK Rowling", pages: 320}, {title: "Harry Potter 3", author: "JK Rowling", pages: 440}];
-
-
-
 function addBookToLibrary() {
     let title = prompt("Enter a book title");
     let author = prompt("Enter author of that book");
@@ -40,5 +36,21 @@ function readMyLibrary() {
     
     
 }
+
+const myLibrary = [{title: "Harry Potter 1", author: "JK Rowling", pages: 230}, {title: "Harry Potter 2", author: "JK Rowling", pages: 320}, {title: "Harry Potter 3", author: "JK Rowling", pages: 440}];
+
+const dialog = document.querySelector("dialog");
+const newBookButton = document.querySelector("#newBook");
+const closeButton = document.querySelector("#close");
+
+// open modal dialog
+newBookButton.addEventListener("click", () => {
+    dialog.showModal();
+});
+
+// closes modal dialog
+closeButton.addEventListener("click", () => {
+    dialog.close();
+});
 
 readMyLibrary();

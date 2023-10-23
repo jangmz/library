@@ -13,8 +13,8 @@ body {
     border-radius: 9px;
     margin-bottom: 30px;
 }
-.heading #newBook:hover {
-    /*background-color: rgb(154, 192, 93);*/
+.heading #newBook:hover,
+.btn:hover {
     box-shadow: 0 0 5px black;
     cursor: pointer;
 }
@@ -28,4 +28,19 @@ body {
     border: 1px solid gray;
     border-radius: 9px;
     flex: 1 1 auto;
+}
+dialog {
+    border: 1px solid lightgray;
+    border-radius: 7px;
+}
+.btn {
+    padding: 10px 30px;
+    background-color: rgb(200, 248, 123);
+    border-style: none;
+    border-radius: 9px;
+    margin-bottom: 30px;
+}
+
+::backdrop {
+    background-color: rgba(0, 0, 0, 0.7);
 }
