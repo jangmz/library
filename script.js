@@ -1,15 +1,18 @@
-function Book(title, author, pages) {
+function Book(title, author, pages, isRead) {
     this.title = title;
     this.author = author;
     this.pages = pages;
+    this.isRead = isRead;
 }
 
 function addBookToLibrary() {
+    /*
     let title = prompt("Enter a book title");
     let author = prompt("Enter author of that book");
     let pages = prompt("Enter how many pages does that book have");
+    */
 
-    const book = new Book(title, author, pages);
+    const book = new Book(title, author, pages, isRead);
     myLibrary.push(book);
 }
 
@@ -26,10 +29,18 @@ function readMyLibrary() {
         author.textContent = book.author;
         const pages = document.createElement("h5");
         pages.textContent = book.pages + " pages";
+        const isRead = document.createElement("p");
+        
+        if (book.isRead == true) {
+            isRead.textContent = "Has been read.";
+        } else {
+            isRead.textContent = "Not read yet.";
+        }
 
         card.appendChild(bookTitle);
         card.appendChild(author);
         card.appendChild(pages);
+        card.appendChild(isRead);
 
         cards.appendChild(card);
     });
@@ -37,7 +48,7 @@ function readMyLibrary() {
     
 }
 
-const myLibrary = [{title: "Harry Potter 1", author: "JK Rowling", pages: 230}, {title: "Harry Potter 2", author: "JK Rowling", pages: 320}, {title: "Harry Potter 3", author: "JK Rowling", pages: 440}];
+const myLibrary = [{title: "Harry Potter 1", author: "JK Rowling", pages: 230, isRead: true}, {title: "Harry Potter 2", author: "JK Rowling", pages: 320, isRead: true}, {title: "Harry Potter 3", author: "JK Rowling", pages: 440, isRead: false}];
 
 const dialog = document.querySelector("dialog");
 const newBookButton = document.querySelector("#newBook");
