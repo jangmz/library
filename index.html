@@ -16,25 +16,30 @@
                     <h3>New Book entry</h3>
                     <img class="close-icon" id="close" src="icons/close-circle.svg">
                 </div>
-                <form class="modal-main">
+                <form action="" id="bookSubmitForm" class="modal-main">
                     <div class="modal-input">
                         <label for="title">Title</label>
-                        <input type="text" name="title" id="title">
+                        <input type="text" id="title" required>
                     </div>
                     <div class="modal-input">
                         <label for="author">Author</label>
-                        <input type="text" name="author" id="author">
+                        <input type="text" id="author" required>
                     </div>
                     <div class="modal-input">
                         <label for="pages">Number of pages</label>
-                        <input type="number" name="pages" id="pages">
+                        <input type="number" id="pages" required>
                     </div>
                     <div class="modal-input">
-                        <label for="is-read">I have read this book</label>
-                        <input type="checkbox" name="is-read" id="is-read">
+                        <fieldset class="modal-radio">
+                            <legend>I have read this book</legend>
+                            <label for="yes">Yes</label>
+                            <input type="radio" name="is-read" value="yes">
+                            <label for="no">No</label>
+                            <input type="radio" name="is-read" value="no">
+                        </fieldset>
                     </div>
                     <div class="modal-input">
-                        <button type="submit" class="btn" name="submitBtn" id="submitBtn">SUBMIT</button>
+                        <button type="submit" class="btn" id="submitBtn">SUBMIT</button>
                     </div>
                 </form>
             </dialog>

@@ -81,7 +81,18 @@ body {
     border-radius: 9px;
     
 }
-
+.modal-radio {
+    display: grid;
+    grid-template: 1fr 1fr / 1fr 1fr;
+    gap: 5px;
+}
+.modal-radio input {
+    width: 20px;
+}
+.modal-radio label {
+    justify-self: center;
+    align-self: center;
+}
 ::backdrop {
     background-color: rgba(0, 0, 0, 0.7);
 }

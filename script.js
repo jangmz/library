@@ -6,14 +6,22 @@ function Book(title, author, pages, isRead) {
 }
 
 function addBookToLibrary() {
-    /*
-    let title = prompt("Enter a book title");
-    let author = prompt("Enter author of that book");
-    let pages = prompt("Enter how many pages does that book have");
-    */
+    let title = document.getElementById("title");
+    let author = document.getElementById("author");
+    let pages = document.getElementById("pages");
+    let radio = document.getElementsByName("is-read");
+    let isRead;
 
-    const book = new Book(title, author, pages, isRead);
+    radio.forEach(entry => {
+        if (entry.checked == true) {
+            isRead = entry.value;
+        }
+    })
+
+    const book = new Book(title.value, author.value, pages.value, isRead);
     myLibrary.push(book);
+    console.log(myLibrary);
+    alert("Book has been successfully submited!");
 }
 
 function readMyLibrary() {
@@ -31,7 +39,7 @@ function readMyLibrary() {
         pages.textContent = book.pages + " pages";
         const isRead = document.createElement("p");
         
-        if (book.isRead == true) {
+        if (book.isRead == true || book.isRead == "yes") {
             isRead.textContent = "Has been read.";
         } else {
             isRead.textContent = "Not read yet.";
@@ -53,6 +61,7 @@ const myLibrary = [{title: "Harry Potter 1", author: "JK Rowling", pages: 230, i
 const dialog = document.querySelector("dialog");
 const newBookButton = document.querySelector("#newBook");
 const closeButton = document.querySelector("#close");
+const newBookSubmition = document.getElementById("bookSubmitForm");
 
 // open modal dialog
 newBookButton.addEventListener("click", () => {
@@ -62,6 +71,13 @@ newBookButton.addEventListener("click", () => {
 // closes modal dialog
 closeButton.addEventListener("click", () => {
     dialog.close();
+});
+
+// submits a book
+newBookSubmition.addEventListener("submit", (e) => {
+    e.preventDefault(); // prevents sending to the server
+    addBookToLibrary();
+    //readMyLibrary();
 });
 
 readMyLibrary();
