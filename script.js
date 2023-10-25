@@ -43,6 +43,10 @@ function createBookCard(book) {
     const pages = document.createElement("h5");
     const isRead = document.createElement("p");
     const deleteIcon = document.createElement("img");
+    const readToggleIcon = document.createElement("label");
+    const toggleInput = document.createElement("input");
+    const toggleSpan = document.createElement("span");
+
 
     // set values for created elements
     card.className = "card";
@@ -50,9 +54,14 @@ function createBookCard(book) {
     bookTitle.textContent = book.title;
     author.textContent = book.author;
     pages.textContent = book.pages + " pages";
+    
     deleteIcon.src = "icons/delete.svg";
     deleteIcon.className = "delete-icon";
     deleteIcon.id = book.bookId;
+
+    readToggleIcon.className = "switch";
+    toggleInput.type = "checkbox";
+    toggleSpan.className = "slider round";
 
     // event listener for the delete icon
     deleteIcon.addEventListener("click", () => {
@@ -64,13 +73,20 @@ function createBookCard(book) {
     } else {
         isRead.textContent = "Has not been read yet.";
     }
+
+    // event listener on toggle button for isRead
     
+    // insert elements for toggle button
+    readToggleIcon.appendChild(toggleInput);
+    readToggleIcon.appendChild(toggleSpan);
+
     // inserts created elements in the card div, appends card to all the cards
     card.appendChild(bookTitle);
     card.appendChild(author);
     card.appendChild(pages);
     card.appendChild(isRead);
     card.appendChild(deleteIcon);
+    card.appendChild(readToggleIcon);
     cards.appendChild(card);
 } 
 

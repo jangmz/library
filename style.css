@@ -3,6 +3,7 @@ body {
     margin: 0;
     padding: 0;
 }
+
 .container {
     padding: 0 50px;
 }
@@ -13,6 +14,7 @@ body {
     flex-direction: column;
     align-items: center;
 }
+
 .heading #newBook {
     padding: 10px 30px;
     background-color: rgb(200, 248, 123);
@@ -20,6 +22,7 @@ body {
     border-radius: 9px;
     margin-bottom: 30px;
 }
+
 .heading #newBook:hover,
 .btn:hover {
     box-shadow: 0 0 5px black;
@@ -32,11 +35,54 @@ body {
     flex-wrap: wrap;
     gap: 30px;
 }
+
 .card {
     padding: 0px 20px;
     border: 1px solid gray;
     border-radius: 9px;
     flex: 1 1 auto;
+
+    display: grid;
+    grid-template: repeat(4, 1fr) / 2fr 1fr;
+}
+/* title */
+.card h2 {
+    grid-row: 1 / 1;
+    grid-column: 1 / 1;
+}
+/* author */
+.card h4 {
+    grid-row: 2 / 3;
+    grid-column: 1 / 1;
+}
+/* pages */
+.card h5 {
+    grid-row: 3 / 4;
+    grid-column: 1 / 1;
+}
+.card p,
+.card .switch {
+    grid-row: 4 / 5;
+    grid-column: 1 / 1;
+}
+
+.card .switch {
+    justify-self: end;
+    align-self: center;
+}
+
+.card h2,
+.card h4,
+.card h5,
+.card p {
+    align-self: center;
+}
+
+.card .delete-icon {
+    grid-row: 4 / 5;
+    grid-column: 2 / 3;
+    align-self: center;
+    justify-self: end;
 }
 
 /* MODAL 5x2 */ 
@@ -45,6 +91,7 @@ body {
     border-radius: 7px;
     width: 400px;
 }
+
 .modal-head {
     padding-left: 20px;
 
@@ -52,10 +99,12 @@ body {
     justify-content: space-between;
     align-items: center;
 }
+
 .modal-main {
     display: flex;
     flex-direction: column;
 }
+
 .modal-input {
     padding: 0 40px;
     padding-bottom: 20px;
@@ -65,16 +114,19 @@ body {
     align-items: center;
     justify-content: center;
 }
+
 .modal-input input {
     height: 20px;
     width: 350px;
     font-size: 14px;
 }
+
 .close-icon,
 .delete-icon {
-    width: 25px;
-    height: 25px;
+    width: 34px;
+    height: 34px;
 }
+
 .btn {
     padding: 10px 30px;
     background-color: rgb(200, 248, 123);
@@ -82,18 +134,86 @@ body {
     border-radius: 9px;
     
 }
+
 .modal-radio {
     display: grid;
     grid-template: 1fr 1fr / 1fr 1fr;
     gap: 5px;
 }
+
 .modal-radio input {
     width: 20px;
 }
+
 .modal-radio label {
     justify-self: center;
     align-self: center;
 }
+
 ::backdrop {
     background-color: rgba(0, 0, 0, 0.7);
+}
+
+/* SWITCH SLIDER on cards */
+/* The switch - the box around the slider */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* The slider */
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #505050;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+input:checked + .slider {
+    background-color: rgb(200, 248, 123);
+}
+
+input:focus + .slider {
+    box-shadow: 0 0 1px rgb(200, 248, 123);
+}
+
+input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
 }
