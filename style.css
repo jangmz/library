@@ -70,7 +70,8 @@ body {
     width: 350px;
     font-size: 14px;
 }
-.close-icon {
+.close-icon,
+.delete-icon {
     width: 25px;
     height: 25px;
 }
