@@ -153,3 +153,5 @@ deleteButtons.forEach(button => {
         deleteBook(button.id);
     });
 })
+
+// toggle for isRead property
