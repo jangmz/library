@@ -19,38 +19,47 @@ function addBookToLibrary() {
     })
 
     const book = new Book(title.value, author.value, pages.value, isRead);
+    
     myLibrary.push(book);
-    console.log(myLibrary);
-    alert("Book has been successfully submited!");
+    addBookCard(book);
+    
+    title.value = "";
+    author.value = "";
+    pages.value = "";
+    isRead = "";
 }
+
+function addBookCard(book) {
+    const cards = document.querySelector(".cards");
+    const card = document.createElement("div");
+    const bookTitle = document.createElement("h2");
+    const author = document.createElement("h4");
+    const pages = document.createElement("h5");
+    const isRead = document.createElement("p");
+
+    card.className = "card";
+    bookTitle.textContent = book.title;
+    author.textContent = book.author;
+    pages.textContent = book.pages + " pages";
+    
+    if (book.isRead == true || book.isRead == "yes") {
+        isRead.textContent = "Has been read.";
+    } else {
+        isRead.textContent = "Has not been read yet.";
+    }
+    
+    card.appendChild(bookTitle);
+    card.appendChild(author);
+    card.appendChild(pages);
+    card.appendChild(isRead);
+    cards.appendChild(card);
+} 
 
 function readMyLibrary() {
     const cards = document.querySelector(".cards");
     
     myLibrary.forEach(book => {
-        const card = document.createElement("div");
-        card.classList.add("card");
-        
-        const bookTitle = document.createElement("h2");
-        bookTitle.textContent = book.title;
-        const author = document.createElement("h4");
-        author.textContent = book.author;
-        const pages = document.createElement("h5");
-        pages.textContent = book.pages + " pages";
-        const isRead = document.createElement("p");
-        
-        if (book.isRead == true || book.isRead == "yes") {
-            isRead.textContent = "Has been read.";
-        } else {
-            isRead.textContent = "Not read yet.";
-        }
-
-        card.appendChild(bookTitle);
-        card.appendChild(author);
-        card.appendChild(pages);
-        card.appendChild(isRead);
-
-        cards.appendChild(card);
+        addBookCard(book);
     });
     
     
@@ -77,7 +86,7 @@ closeButton.addEventListener("click", () => {
 newBookSubmition.addEventListener("submit", (e) => {
     e.preventDefault(); // prevents sending to the server
     addBookToLibrary();
-    //readMyLibrary();
+    dialog.close();
 });
 
 readMyLibrary();
