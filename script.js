@@ -54,13 +54,16 @@ function createBookCard(book) {
     bookTitle.textContent = book.title;
     author.textContent = book.author;
     pages.textContent = book.pages + " pages";
+
     readStatus.className = "read-status";
     readStatusText.textContent = "Read Status: ";
     
+    // delete icon src, class, id
     deleteIcon.src = "icons/delete.svg";
     deleteIcon.className = "delete-icon";
     deleteIcon.id = book.bookId;
 
+    // toggle checkbox label class, input, span
     readToggleIcon.className = "switch";
     toggleInput.type = "checkbox";
     toggleSpan.className = "slider round";
@@ -69,15 +72,14 @@ function createBookCard(book) {
     deleteIcon.addEventListener("click", () => {
         deleteBook(deleteIcon.id);
     })
-    
-    /*if (book.isRead == true || book.isRead == "yes") {
-        isRead.textContent = "Has been read.";
-    } else {
-        isRead.textContent = "Has not been read yet.";
-    }*/
 
-    // event listener on toggle button for isRead
-    
+    // set the status of checkbox
+    if(book.isRead == true || book.isRead == "yes") {
+        toggleInput.checked = true;
+    } else {
+        toggleInput.checked = false;
+    }
+
     // insert elements for toggle button
     readToggleIcon.appendChild(toggleInput);
     readToggleIcon.appendChild(toggleSpan);
