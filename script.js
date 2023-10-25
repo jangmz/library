@@ -41,12 +41,12 @@ function createBookCard(book) {
     const bookTitle = document.createElement("h2");
     const author = document.createElement("h4");
     const pages = document.createElement("h5");
-    const isRead = document.createElement("p");
+    const readStatus = document.createElement("div");
+    const readStatusText = document.createElement("p");
     const deleteIcon = document.createElement("img");
     const readToggleIcon = document.createElement("label");
     const toggleInput = document.createElement("input");
     const toggleSpan = document.createElement("span");
-
 
     // set values for created elements
     card.className = "card";
@@ -54,6 +54,8 @@ function createBookCard(book) {
     bookTitle.textContent = book.title;
     author.textContent = book.author;
     pages.textContent = book.pages + " pages";
+    readStatus.className = "read-status";
+    readStatusText.textContent = "Read Status: ";
     
     deleteIcon.src = "icons/delete.svg";
     deleteIcon.className = "delete-icon";
@@ -68,25 +70,26 @@ function createBookCard(book) {
         deleteBook(deleteIcon.id);
     })
     
-    if (book.isRead == true || book.isRead == "yes") {
+    /*if (book.isRead == true || book.isRead == "yes") {
         isRead.textContent = "Has been read.";
     } else {
         isRead.textContent = "Has not been read yet.";
-    }
+    }*/
 
     // event listener on toggle button for isRead
     
     // insert elements for toggle button
     readToggleIcon.appendChild(toggleInput);
     readToggleIcon.appendChild(toggleSpan);
+    readStatus.appendChild(readStatusText);
+    readStatus.appendChild(readToggleIcon);
 
     // inserts created elements in the card div, appends card to all the cards
     card.appendChild(bookTitle);
     card.appendChild(author);
     card.appendChild(pages);
-    card.appendChild(isRead);
+    card.appendChild(readStatus);
     card.appendChild(deleteIcon);
-    card.appendChild(readToggleIcon);
     cards.appendChild(card);
 } 
 
