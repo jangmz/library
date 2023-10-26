@@ -115,20 +115,26 @@ function deleteBook(bookId) {
     
 }
 
+function toggleReadStatus(bookId) {
+    
+}
+
 const myLibrary = [
-    {bookId: 0, title: "Test Book 1", author: "Author Test", pages: 230, isRead: true},
-    {bookId: 1, title: "Test Book  2", author: "Author Test", pages: 320, isRead: true},
-    {bookId: 2, title: "Test Book  3", author: "Author Test", pages: 440, isRead: false}
+    {bookId: 0, title: "Test Book 1", author: "Author One", pages: 230, isRead: true},
+    {bookId: 1, title: "Test Book  2", author: "Author Two", pages: 320, isRead: true},
+    {bookId: 2, title: "Test Book  3", author: "Author Three", pages: 440, isRead: false}
 ];
 
 // display books currently in the array
 readMyLibrary();
 
+// select elements for event listeners
 const dialog = document.querySelector("dialog");
 const newBookButton = document.querySelector("#newBook");
 const closeButton = document.querySelector("#close");
 const newBookSubmition = document.getElementById("bookSubmitForm");
 const deleteButtons = document.querySelectorAll(".delete-icon");
+const toggleSwitches = document.querySelectorAll(".switch");
 
 // open modal dialog
 newBookButton.addEventListener("click", () => {
@@ -155,3 +161,8 @@ deleteButtons.forEach(button => {
 })
 
 // toggle for isRead property
+toggleSwitches.forEach(toggleSwitch => {
+    toggleSwitch.addEventListener("change", () => {
+        toggleReadStatus(toggleSwitch.parentNode.parentNode.id);
+    })
+})
