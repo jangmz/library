@@ -18,7 +18,11 @@ function addBookToLibrary() {
     // check which radio button is selected regarding the "read" status
     radio.forEach(entry => {
         if (entry.checked == true) {
-            isRead = entry.value;
+            if(entry.value == "no"){
+                isRead = false;
+            } else {
+                isRead = true;
+            }
         }
     })
 
@@ -63,18 +67,18 @@ function createBookCard(book) {
     deleteIcon.className = "delete-icon";
     deleteIcon.id = book.bookId;
 
-    // toggle checkbox label class, input, span
-    readToggleIcon.className = "switch";
-    toggleInput.type = "checkbox";
-    toggleSpan.className = "slider round";
-
     // event listener for the delete icon
     deleteIcon.addEventListener("click", () => {
         deleteBook(deleteIcon.id);
     })
 
+    // toggle switch checkbox label class, input, span
+    readToggleIcon.className = "switch";
+    toggleInput.type = "checkbox";
+    toggleSpan.className = "slider round";
+
     // set the status of checkbox
-    if(book.isRead == true || book.isRead == "yes") {
+    if(book.isRead === true || book.isRead.toLowerCase == "yes") {
         toggleInput.checked = true;
     } else {
         toggleInput.checked = false;
@@ -86,6 +90,11 @@ function createBookCard(book) {
     readStatus.appendChild(readStatusText);
     readStatus.appendChild(readToggleIcon);
 
+    // event listener for the toggle switch
+    readToggleIcon.addEventListener("change", () => {
+        toggleReadStatus(readToggleIcon.parentNode.parentNode.id);
+    });
+
     // inserts created elements in the card div, appends card to all the cards
     card.appendChild(bookTitle);
     card.appendChild(author);
@@ -93,6 +102,8 @@ function createBookCard(book) {
     card.appendChild(readStatus);
     card.appendChild(deleteIcon);
     cards.appendChild(card);
+
+    console.log(myLibrary);
 } 
 
 function readMyLibrary() {    
@@ -116,7 +127,18 @@ function deleteBook(bookId) {
 }
 
 function toggleReadStatus(bookId) {
-    
+    myLibrary.forEach(book => {
+        // find the id of the book
+        if(book.bookId == bookId) {
+            // check the current read status and change it
+            if(book.isRead === false || book.isRead.toLowerCase == "no") {
+                book.isRead = true;
+            } else {
+                book.isRead = false;
+            }
+        }
+    });
+    console.log(myLibrary);
 }
 
 const myLibrary = [
@@ -158,11 +180,11 @@ deleteButtons.forEach(button => {
     button.addEventListener("click", () => {
         deleteBook(button.id);
     });
-})
+});
 
 // toggle for isRead property
 toggleSwitches.forEach(toggleSwitch => {
     toggleSwitch.addEventListener("change", () => {
         toggleReadStatus(toggleSwitch.parentNode.parentNode.id);
-    })
-})
+    });
+});

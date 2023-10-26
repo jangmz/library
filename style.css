@@ -2,6 +2,7 @@ body {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     margin: 0;
     padding: 0;
+    background: linear-gradient(to right, rgb(206, 44, 51), rgb(200, 248, 123));
 }
 
 .container {
@@ -15,12 +16,20 @@ body {
     align-items: center;
 }
 
+.heading h1 {
+    color: white;
+    text-transform: uppercase;
+    font-size: 50px;
+    text-shadow: 0 0 20px black;
+}
+
 .heading #newBook {
-    padding: 10px 30px;
+    padding: 20px 50px;
     background-color: rgb(200, 248, 123);
     border-style: none;
     border-radius: 9px;
     margin-bottom: 30px;
+    font-weight: bold;
 }
 
 .heading #newBook:hover,
@@ -37,9 +46,10 @@ body {
 }
 
 .card {
+    background-color: rgba(255, 255, 255, 0.8);
     padding: 0px 20px;
     border: 1px solid gray;
-    border-radius: 9px;
+    border-radius: 15px;
     flex: 1 1 auto;
 
     display: grid;
@@ -134,7 +144,7 @@ body {
     background-color: rgb(200, 248, 123);
     border-style: none;
     border-radius: 9px;
-    
+    font-weight: bold;
 }
 
 .modal-radio {
@@ -198,11 +208,11 @@ body {
 }
 
 input:checked + .slider {
-    background-color: rgb(200, 248, 123);
+    background-color: rgb(206, 44, 51);
 }
 
 input:focus + .slider {
-    box-shadow: 0 0 1px rgb(200, 248, 123);
+    box-shadow: 0 0 1px rgb(206, 44, 51);
 }
 
 input:checked + .slider:before {
