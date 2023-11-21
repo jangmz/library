@@ -7,15 +7,6 @@ class Book {
         this.isRead = isRead;
     }
 }
-/*
-function Book(bookId, title, author, pages, isRead) {
-    this.bookId = bookId;
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.isRead = isRead;
-}
-*/
 
 class Library {
     constructor() {
@@ -24,10 +15,13 @@ class Library {
 
     addBookToLibrary(title, author, pages, isRead) {
         const bookId = this.myLibrary.length > 0 ? this.myLibrary[this.myLibrary.length - 1].bookId + 1 : 0;
+
         // create new book and push it to array
         const book = new Book (bookId, title, author, pages, isRead);
         this.myLibrary.push(book);
         this.createBookCard(book);
+        
+        console.log(this.myLibrary);
     }
 
     createBookCard(book) {
@@ -95,7 +89,6 @@ class Library {
         card.appendChild(deleteIcon);
         cards.appendChild(card);
 
-        console.log(this.myLibrary);
     }
 
     readMyLibrary() {
@@ -266,7 +259,7 @@ library.addBookToLibrary("Test Book 2", "Author Two", 330, false);
 library.addBookToLibrary("Test Book 3", "Author Three", 430, true);
 
 // display books currently in array
-library.readMyLibrary();
+//library.readMyLibrary();
 
 // select elements for event listeners
 const dialog = document.querySelector("dialog");
@@ -293,7 +286,7 @@ newBookSubmition.addEventListener("submit", (e) => {
     const radio = document.getElementById("input[name='is-read']:checked");
     const isRead = radio ? radio.value === "yes" : false;
 
-    library.addBookToLibrary(title, auhor, pages, isRead);
+    library.addBookToLibrary(title, author, pages, isRead);
     dialog.close();
 });
 
