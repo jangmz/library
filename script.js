@@ -144,28 +144,33 @@ closeButton.addEventListener("click", () => {
 
 // submit a book
 newBookSubmition.addEventListener("submit", (e) => {
-    e.preventDefault(); // prevents sending to the server
-    const title = document.getElementById("title").value;
-    const author = document.getElementById("author").value;
-    const pages = document.getElementById("pages").value;
-    const radio = document.querySelector("input[name='is-read']:checked");
-    const isRead = radio ? radio.value === "yes" : false;
+    if (!newBookSubmition.checkValidity()) {
+        alert("No fields should remain empty!");
+    } else {
+        e.preventDefault(); // prevents sending to the server
+        const title = document.getElementById("title").value;
+        const author = document.getElementById("author").value;
+        const pages = document.getElementById("pages").value;
+        const radio = document.querySelector("input[name='is-read']:checked");
+        const isRead = radio ? radio.value === "yes" : false;
 
-    library.addBookToLibrary(title, author, pages, isRead);
+        library.addBookToLibrary(title, author, pages, isRead);
 
-    dialog.close();
-});
+        // delete a book
+        document.querySelectorAll(".delete-icon").forEach(button => {
+            button.addEventListener("click", () => {
+                library.deleteBook(button.id);
+            });
+        });
 
-// delete a book
-document.querySelectorAll(".delete-icon").forEach(button => {
-    button.addEventListener("click", () => {
-        library.deleteBook(button.id);
-    });
-});
+        // toggle isRead property
+        document.querySelectorAll(".switch").forEach(toggleSwitch => {
+            toggleSwitch.addEventListener("click", () => {
+                library.toggleReadStatus(toggleSwitch.closest(".card").id);
+            });
+        });
 
-// toggle isRead property
-document.querySelectorAll(".switch").forEach(toggleSwitch => {
-    toggleSwitch.addEventListener("click", () => {
-        library.toggleReadStatus(toggleSwitch.closest(".card").id);
-    });
+        dialog.close();
+    }
+    
 });
